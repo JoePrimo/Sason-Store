@@ -1,0 +1,72 @@
+@import "../../variables";
+
+@mixin block() {
+  background-color: $white;
+  border: 2px solid $gray3;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+}
+
+:host {
+  .product-view {
+    &__container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    &__content {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    &__main {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      margin: 20px 0;
+      @media (max-width: $media-m) {
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+    &__info {
+      font-size: 18px;
+      display: flex;
+      flex-direction: column;
+      line-height: 40px;
+    }
+    &__prefix {
+      font-weight: bold;
+    }
+    &__name {
+      @include block();
+      font-size: 30px;
+      font-weight: bold;
+    }
+    &__img {
+      border: 5px solid $white;
+      width: 260px;
+      height: 380px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+    }
+    &__description {
+      @include block();
+
+    }
+    &__invalid {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    &__btn {
+      margin-top: 10px;
+    }
+  }
+}

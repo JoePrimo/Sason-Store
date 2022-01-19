@@ -1,0 +1,29 @@
+@import "../../../variables";
+
+:host {
+  .navbar {
+    &__bg {
+      background-color: $blue1;
+      .nav-link {
+        color: $white !important;
+      }
+      .navbar-brand {
+        color: $white !important;
+        cursor: pointer;
+        font-size: 28px;
+      }
+      .collapse {
+        justify-content: flex-end;
+        .mr-auto, .mx-auto {
+          margin-right: 0 !important;
+        }
+      }
+      .nav-item {
+        cursor: pointer;
+      }
+      .navbar-toggler {
+        background-color: $blue2;
+      }
+    }
+  }
+}

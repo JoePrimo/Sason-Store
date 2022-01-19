@@ -1,0 +1,25 @@
+<div class="contact__container">
+  <div class="contact__top">Contact Us</div>
+  <form *ngIf="editing && !busy" [formGroup]="formGroup" class="contact__content">
+    <div class="contact__item">
+      <div *ngIf="hasError('name')" class="contact__invalid">Only letters (Min 2 chars)</div>
+      <input formControlName="name" type="text" class="form-control" maxlength="20" placeholder="Your Name">
+    </div>
+    <div class="contact__item">
+      <div *ngIf="hasError('email')" class="contact__invalid">Invalid Email address</div>
+      <input formControlName="email" type="text" class="form-control" maxlength="20" placeholder="Your Email">
+    </div>
+    <div class="contact__item contact__message">
+      <div *ngIf="hasError('message')" class="contact__invalid">Invalid message</div>
+      <textarea formControlName="message" type="text" class="form-control" placeholder="Message (Max 50 chars)" maxlength="50"></textarea>
+    </div>
+  </form>
+  <div *ngIf="busy" class="contact__spinner">
+    <div class="loader"></div>
+    <div>Sending...</div>
+  </div>
+  <div *ngIf="!editing && !busy" class="contact__success">Your message has been sent successfully :)</div>
+  <div *ngIf="editing" class="contact__button">
+    <button type="button" class="btn btn-success" (click)="onSendMessageClicked()" [disabled]="formGroup.invalid">Send Message</button>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light navbar__bg">
+  <img src="./assets/images/S_Logo.PNG" height="50 %" alt="Sason Logo" > &nbsp; &nbsp;
+  <a class="navbar-brand" (click)="navigate('/')">Sason's Store</a>
+  <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed" aria-controls="sasonsNavbar" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="sasonsNavbar" [ngbCollapse]="isCollapsed">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" (click)="navigate('/')">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="navigate('about')">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="navigate('contact')">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>

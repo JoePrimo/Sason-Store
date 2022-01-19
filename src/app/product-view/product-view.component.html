@@ -1,0 +1,23 @@
+<div class="product-view__container">
+  <div *ngIf="busy" class="loader"></div>
+  <div *ngIf="!busy && product" class="product-view__content">
+    <div class="product-view__name">{{product.name}}</div>
+    <div class="product-view__main">
+      <div class="product-view__pic">
+        <div class="product-view__img" [style.backgroundImage]="'url('+product.img+')'"></div>
+      </div>
+      <div class="product-view__info">
+        <div><span class="product-view__prefix">Catalog ID:</span> {{product._id}}</div>
+        <div><span class="product-view__prefix">Name:</span> {{product.name}}</div>
+        <div><span class="product-view__prefix">Price:</span> ${{product.price}}</div>
+        <button type="button" class="btn btn-success product-view__btn"
+                [ngClass]="{'btn-danger': inCart}" (click)="changeCartStatus()">
+          <i class="material-icons"> {{inCart ? 'remove_shopping_cart' : 'add_shopping_cart'}}</i>
+          <div>{{inCart ? 'Remove from cart' : 'Add to cart'}}</div>
+        </button>
+      </div>
+    </div>
+    <div class="product-view__description">{{product.description}}</div>
+  </div>
+  <div *ngIf="!busy && !product" class="product-view__invalid">NO product to show</div>
+</div>

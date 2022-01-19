@@ -1,0 +1,13 @@
+<div *ngIf="!busy" class="store__container">
+  <div class="store__top">
+    <div class="store__header">
+      <app-navbar></app-navbar>
+    </div>
+    <div class="store__body">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="store__bottom">
+    <div class="store__footer">The content in this website is completely fictional and was made as requirement of TCWD course of the Technion</div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="products-list__container">
+  <div class="products-list__top">
+    <div class="products-list__search">
+      <i class="material-icons products-list__cart-icon">search</i>
+      <div class="products-list__search-input"><input type="text" class="form-control"
+                                                      placeholder="Product Name" [formControl]="searchBox"></div>
+    </div>
+    <div class="products-list__cart">
+      <i class="material-icons products-list__cart-icon">shopping_cart</i>
+      <div class="products-list__cart-info">
+        <div>Items: {{cartService.productsIdsInCart.length}}</div>
+        <div>Price: ${{cartService.totalPrice | number : '1.2-2'}}</div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="busy" class="loader"></div>
+  <div *ngIf="!busy && !productsListPages[currentPage].length" class="products-list__no-content">No results found</div>
+  <div *ngIf="!busy && productsListPages[currentPage].length" class="products-list__content">
+    <div *ngFor="let productData of productsListPages[currentPage]" class="products-list__item"
+         [routerLink]="['/product',productData.product._id]">
+      <div class="products-list__img">
+        <div class="products-list__img-responsive" [style.backgroundImage]="'url('+productData.product.img+')'"></div>
+      </div>
+      <div class="products-list__description">{{productData.product.description}}</div>
+      <div class="products-list__price">{{productData.product.price | number : '1.2-2'}}$</div>
+      <div class="products-list__button">
+        <button type="button" class="btn btn-success products-list__btn" [ngClass]="{'btn-danger': productData.inCart}"
+                (click)="onActionClicked($event, productData)">
+          <i class="material-icons"> {{productData.inCart ? 'remove_shopping_cart' :
+            'add_shopping_cart'}}</i>
+        </button>
+      </div>
+    </div>
+    <div class="products-list__pages">
+      <button type="button" class="btn btn-primary" (click)="changePage(false)" [disabled]="currentPage===0"> <</button>
+      <div class="products-list__pages-text">Page {{currentPage + 1}} of {{totalPages}}</div>
+      <button type="button" class="btn btn-primary" (click)="changePage()" [disabled]="currentPage===totalPages-1"> >
+      </button>
+    </div>
+  </div>
+</div>
